@@ -1,6 +1,7 @@
 Building an ESXi Data Center: 
 Step-by-Step Guide
 This document outlines the steps I performed to build a basic ESXi data center, including installation and configuration of the vCenter Server Appliance (VCSA).
+
 Seat tight and enjoy thourgh my history :D 
 
 1. Preparing the ESXi Host
