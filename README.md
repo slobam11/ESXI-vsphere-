@@ -71,3 +71,9 @@ Access the vCenter interface through your browser using the configured static IP
 Reduce the number of active virtual machines running on the ESXi host if performance is suboptimal.
 
 Regularly monitor disk and RAM usage to prevent resource bottlenecks.
+
+This is a  ESXI Host on <img width="1601" height="954" alt="image" src="https://github.com/user-attachments/assets/f20a1da2-e16a-4a42-bd57-50181a92b851" />
+
+
+
+
