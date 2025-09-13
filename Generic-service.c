@@ -1,6 +1,4 @@
 # /usr/local/nagios/etc/objects/templates.cfg
-
-
 define service{
 name generic-service
 active_checks_enabled 1
@@ -24,4 +22,5 @@ notification_options w,u,c,r
 notification_interval 30
 notification_period 24x7
 register 0
+
 }
