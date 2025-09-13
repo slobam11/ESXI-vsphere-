@@ -1,0 +1,51 @@
+Sizing for Nagios + Nagstamon (3 ESXi hosts)
+Current scope
+
+~3 hosts × (3–6 services each) @ 5-minute check interval
+Basic checks: PING, SSH, TCP/443 (optionally add VMware API later)
+
+Minimal vs. recommended
+CPU:
+Minimal: 1 vCPU @ ≥2.0 GHz
+Recommended: 2 vCPU (gives headroom for API checks and bursts)
+RAM:
+Minimal: 1–2 GB
+Recommended: 2 GB (Ubuntu overhead + buffer)
+Disk:
+Minimal: 20 GB
+Recommended: 30 GB (logs + future plugins)
+Network: 1 Gbit/s NIC, reliable mgmt reachability to ESXi hosts
+With ~9–18 service checks total at a 5-minute interval, you’re only running ~2–4 plugin processes per minute—very light.
+If you add VMware API checks (CPU/Mem/Datastore via vSphere API)
+CPU: 1–2 vCPU
+RAM: 2–4 GB (sweet spot ≈ 3 GB)
+Disk: 20–40 GB (more logs/perf data)
+If you grow to ~100 hosts / 1000+ services (for orientation)
+CPU: 2–4 vCPU
+RAM: 4–8 GB
+Disk: 40–100 GB (more if you store perfdata/graphs)
+Power & UPS
+If VM: PSU sizing is irrelevant—depends on hypervisor host.
+If physical: PSU is determined by the hardware, not Nagios load.
+Mini-PC/NUC: 65–120 W adapter is fine
+SFF desktop: 250–300 W PSU is plenty (no discrete GPU)
+Rack server: typical 2×500–750 W redundant PSUs (model-dependent)
+UPS: For 40–120 W real draw, a line-interactive 600–1000 VA UPS gives ~10–30 min and clean shutdown.
+Disk & logs
+Enable log rotation (7–14 days is typical).
+If you enable perfdata/graphs (e.g., pnp4nagios/RRD): plan +20–50 GB as service count grows.
+What influences sizing
+Check intervals: shorter intervals = more processes/minute (1-minute checks may warrant +1 vCPU).
+Parallelism: higher concurrent checks → more CPU/RAM.
+Add-ons: DBs or dashboards (MariaDB/InfluxDB/Prometheus/Grafana) add +2 vCPU, +2–4 GB RAM easily.
+Recommended practical VM spec (now + near future)
+2 vCPU, 2 GB RAM, 30 GB disk
+Keep config in GitHub (you already do); snapshot before big changes.
+Lock down with UFW/Firewall; expose only web UI and SSH from admin subnet.
+Quick checklist
+ VM: 2 vCPU / 2 GB RAM / 30 GB disk
+ If hysical: PSU per hardware (e.g., 250–300 W SFF), UPS 600–1000 VA
+ Checks at 5-minute intervals (PING/SSH/TCP 443)
+ (Optional) vSphere API checks at 5-minute intervals
+ logrotate configured
+ GitHub repo with objects/esxi.cfg and the procedure
