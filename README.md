@@ -19,9 +19,9 @@ Resource macros: /usr/local/nagios/etc/resource.cfg (defines $USER1$)
 
 1) Inventory (we monitor 3 ESXi hosts)
 Hostname (Nagios host_name)	Display	IP Address
-esxi01	ESXi 192.168.1.5	192.168.1.5
-esxi02	ESXi 192.168.1.8	192.168.1.8
-esxi03	ESXi 192.168.1.7	192.168.1.7
+esxi01	ESXi 192.168.1.5	
+esxi02	ESXi 192.168.1.8	
+esxi03	ESXi 192.168.1.7	
 
 host_name must be unique; the actual ESXi system hostname can differ. IP is set via address.
 
