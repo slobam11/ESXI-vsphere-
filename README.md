@@ -69,5 +69,9 @@ ls -l /usr/local/nagios/libexec/check_ping
 💡 Author's Note
 Building a robust datacenter is about more than just installation—it's about visibility and control. While AI, forums, and documentation are great tools, the true value lies in how you architect the integration between your hypervisors and your monitoring stack.
 
+An picture from nagios where I added to nagios to follow metrics.
+<img width="946" height="456" alt="image" src="https://github.com/user-attachments/assets/a5986778-9628-4c02-a7ad-3a39f3f1d28f" />
+
+
 Author: Slobodan Milojević
 Sys Admin
